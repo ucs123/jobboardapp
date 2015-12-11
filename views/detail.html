@@ -1,0 +1,15 @@
+
+<div class="content">
+	<div class="jumbotron">
+  <button class="btn btn-grey btn-xs pull-right" ng-click = 'backhome();'>Back Home</button>
+	<h1>Details of the "{{detaildata.Location}}"</h1>
+  </div>
+	       <ul class="list-group">   
+                <li class="list-group-item"><strong>ID : </strong> {{detaildata.id}} </li>
+                <li class="list-group-item"><strong>Location : </strong> {{detaildata.Location}}</li>
+                <li class="list-group-item"><strong>title : </strong> {{detaildata.title}}</li>
+                <li class="list-group-item"><strong>Description : </strong> {{detaildata.description}}</li>
+                <li class="list-group-item"><strong>keywords : </strong> <p ng-repeat="skills in detaildata.keywords">{{skills}}</p> </li>
+          </ul>
+      </div> 
+</div>

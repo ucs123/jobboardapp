@@ -1,0 +1,77 @@
+<div class="content">
+      <div class="jumbotron">
+        <h1>Live Search</h1> 
+        <form class="form-inline container-fluid" role="form">
+        <div class="form-group col-sm-4">
+          <label>Location(e.g. Bostan)</label>
+          <input type="text" class="form-control" ng-model="filterstr.Location">
+        </div>
+        <div class="form-group col-sm-4">
+          <label>Age</label>
+          <!--<input type="text" class="form-control" ng-model="filterstr.age">-->
+          <select ng-model="filterstr.age">
+            <option ng-repeat="x in data | unique : 'age'">{{x.age}}</option>
+          </select>
+        </div>
+      </form>
+      </div>
+      <div class="row">
+      <div class="col-md-8 col-sm-12 search-result">  
+        <ul class="list-inline">
+          <li ng-repeat="(key, value) in filterstr" ng-if="filterstr[key] != ''">
+            {{value}}<span class="remove-filter" ng-click="removeFilter(key);"></span>
+          </li>
+        </ul>
+        <div class="table-responsive">          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Locations</th>
+                <th>Discription</th>
+                <th>Age</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="x in data | filter: filterstr">
+                <td>{{x.Location}}</td>
+                <td>{{x.description.substring(0,50)}} ...</td>
+                <td>{{x.age}}</td>
+                <td><button class="btn btn-grey btn-xs" ng-click = 'viewdetail(x);'>View now</button></td>
+              </tr>
+            </tbody>
+          </table>  
+          </div>
+      </div>
+        <div class="col-md-4 col-sm-12 contact-form"> 
+          <h3>Post Job</h3>
+          <form role="form">
+            <div class="form-group">
+              <label for="name">Id</label>
+              <input type="text" class="form-control" id="name" ng-model="u.id" />
+            </div>
+            <div class="form-group">
+              <label for="name">Title</label>
+              <input type="text" class="form-control" id="name" ng-model="u.title" />
+            </div>
+            <div class="form-group">
+              <label for="name">Age</label>
+              <input type="text" class="form-control" id="age" ng-model="u.age" />
+            </div>
+            <div class="form-group">
+              <label for="name">keywords</label>
+              <input type="text" class="form-control" id="age" ng-model="u.keywords" />
+            </div>
+            <div class="form-group">
+              <label for="email">Location</label>
+              <input type="email" class="form-control" id="email" ng-model="u.Location" />
+            </div>
+            <div class="form-group">
+              <label for="comment">Description</label>
+              <input type="textarea" class="form-control" rows="5" columns="12" id="comment" ng-model="description" />
+            </div>
+            <button type="submit" class="btn btn-lightblue" ng-click="submitjob(u);">Submit</button>
+          </form>
+        </div>
+      </div>
+  </div>
